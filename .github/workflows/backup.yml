@@ -1,8 +1,6 @@
 name: Backup RDS to S3
 
-# on:
-# schedule:
- #  - cron: '10 14 * * *'  # Ejecutar todos los días a la medianoche
+
  	# Controls when the workflow will run
 	on:
 	  # Triggers the workflow on push or pull request events but only for the "main" branch
