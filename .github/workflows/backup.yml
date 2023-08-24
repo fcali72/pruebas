@@ -8,7 +8,7 @@ on:
     branches: [ "main" ]
   # Permite que se ejecute automaticamente Cron
   schedule:
-      - cron: '20 12 * * *'
+      - cron: '30 12 * * *'
 jobs:
   backup:
     runs-on: ubuntu-latest
