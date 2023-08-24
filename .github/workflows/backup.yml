@@ -2,7 +2,7 @@ name: Backup RDS to S3
 
 on:
   schedule:
-    - cron: '21 11 * * *'  # Ejecutar todos los días a la medianoche
+    - cron: '45 11 * * *'  # Ejecutar todos los días a la medianoche
 
 jobs:
   backup:
