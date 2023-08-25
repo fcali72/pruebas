@@ -1,8 +1,10 @@
 name: Backup RDS to S3
+
 on:
   # Permite que se ejecute automaticamente Cron
   schedule:
       - cron: '0 2 * * *'
+      
 jobs:
   backup:
     runs-on: ubuntu-latest
