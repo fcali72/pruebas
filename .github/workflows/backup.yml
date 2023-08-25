@@ -34,7 +34,7 @@ jobs:
           echo "Timestamp: $TIMESTAMP"
           echo "Filename: $FILENAME"
           TOKEN=$(aws rds generate-db-auth-token --hostname creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port 3306 --region us-east-1 --username admin)
-          mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > $FILENAME
+          mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > $TIMESTAM.sql
       - name: Upload backup to S3
         run: |
-          aws s3 cp $GITHUB_WORKSPACE/$FILENAME s3://frkpruebas/respaldo/$FILENAME
+          aws s3 cp $TIMESTAMP.sql s3://frkpruebas/respaldo/
