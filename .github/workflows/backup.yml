@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
   # Permite que se ejecute automaticamente Cron
   schedule:
-      - cron: '0 18 * * *'
+      - cron: '30 21 * * *'
       
 jobs:
   backup:
@@ -29,6 +29,8 @@ jobs:
 
       - name: Dump RDS database
         run: |
+          TIMESTAMP="${{ steps.timestamp.outputs.TIMESTAMP }}"
+          echo "Timestamp: $TIMESTAMP"
           TOKEN=$(aws rds generate-db-auth-token --hostname creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port 3306 --region us-east-1 --username admin)
           mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > $TIMESTAMP.sql
       - name: Upload backup to S3
