@@ -1,9 +1,8 @@
 name: Backup RDS to S3
-  # Controls when the workflow will run
-on:
+ on:
   # Permite que se ejecute automaticamente Cron
   schedule:
-      - cron: '30 1 * * *'
+      - cron: '0 2 * * *'
 jobs:
   backup:
     runs-on: ubuntu-latest
