@@ -33,4 +33,4 @@ jobs:
           mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > BDTEST-CREDITV.sql
       - name: Upload backup to S3
         run: |
-          aws s3 cp BDTEST-CREDITV.sql s3://frkpruebas/respaldo/ --expires 2014-10-01T20:30:00Z
+          aws s3 cp BDTEST-CREDITV.sql s3://frkpruebas/respaldo/BDTEST-CREDITV.sql --expires 2023-10-01T20:30:00Z
