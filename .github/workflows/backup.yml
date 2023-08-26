@@ -33,4 +33,4 @@ jobs:
           mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > $filename
       - name: Upload backup to S3
         run: |
-          aws s3 cp $filename s3://frkpruebas/respaldo/$(echo $filename)
+          aws s3 cp $filename s3://frkpruebas/respaldo/$filename
