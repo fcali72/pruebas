@@ -23,18 +23,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1  # Cambiar a la región correcta
 
-      - name: Set Timestamp Variable
-        id: timestamp
-        run: echo "::set-output name=TIMESTAMP::$(date +'%Y%m%d%H%M%S')"
-
       - name: Dump RDS database
         run: |
-          TIMESTAMP="${{ steps.timestamp.outputs.TIMESTAMP }}"
-          FILENAME="BD-$TIMESTAMP.sql"
-          echo "Timestamp: $TIMESTAMP"
-          echo "Filename: $FILENAME"
+          timestamp=$(date +%Y%m%d%H%M%S)
+          filename=$FILENAME-$timestamp
           TOKEN=$(aws rds generate-db-auth-token --hostname creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port 3306 --region us-east-1 --username admin)
-          mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > bdtest.sql
+          mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > $filename
       - name: Upload backup to S3
         run: |
-          aws s3 cp bdtest.sql s3://frkpruebas/respaldo/
+          aws s3 cp $filename s3://frkpruebas/respaldo/
