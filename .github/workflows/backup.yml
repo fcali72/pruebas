@@ -35,6 +35,7 @@ jobs:
         run: |
           if [ -f $filename ]; then
             echo "Backup created successfully!"
+            pwd
           else
             echo "Backup failed!"
           fi
