@@ -40,6 +40,5 @@ jobs:
           fi
       - name: Upload backup to S3
         run: |
-          echo "AWS CLI Command: aws s3 cp $filename s3://frkpruebas/respaldo/$filename"
-          aws s3 cp $filename s3://frkpruebas/respaldo/$filename
+          aws s3 cp $filename s3://frkpruebas/respaldo/
           
