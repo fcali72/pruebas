@@ -37,6 +37,7 @@ jobs:
             echo "Backup created successfully!"
             pwd
             echo "respaldo: $filename"
+            ls -l $filename
           else
             echo "Backup failed!"
           fi
