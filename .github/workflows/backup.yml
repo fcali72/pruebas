@@ -43,5 +43,5 @@ jobs:
           fi
       - name: Upload backup to S3
         run: |
-          aws s3 cp /home/runner/work/pruebas/pruebas/$filename s3://frkpruebas/respaldo/
+          aws s3 cp "$filename" s3://frkpruebas/respaldo/
           
