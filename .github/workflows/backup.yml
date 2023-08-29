@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
   # Permite que se ejecute automaticamente Cron
   schedule:
-      - cron: '20 19 * * *'
+      - cron: '20 20 * * *'
       
 jobs:
   backup:
