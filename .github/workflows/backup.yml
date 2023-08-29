@@ -38,12 +38,12 @@ jobs:
           if [ -f $filename ]; then
             echo "Backup created successfully!"
             pwd
-            echo "respaldo: $filename"
+            echo respaldo: ${{ env.filename }}
             ls -l
           else
             echo "Backup failed!"
           fi
       - name: Upload backup to S3
         run: |
-          aws s3 cp $filename s3://frkpruebas/respaldo/
+          aws s3 cp ${{ env.filename }} s3://frkpruebas/respaldo/
           
