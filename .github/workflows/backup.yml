@@ -32,18 +32,10 @@ jobs:
           echo "Timestamp: $timestamp"
           echo "Filename: $filename"
           TOKEN=$(aws rds generate-db-auth-token --hostname creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port 3306 --region us-east-1 --username admin)
-          mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > CTTEST.sql
-      - name: Check backup
-        run: |
-          if [ -f $filename ]; then
-            echo "Backup created successfully!"
-            pwd
-            echo respaldo: ${{ env.filename }}
-            ls -l
-          else
-            echo "Backup failed!"
-          fi
+          mysqldump --host=creditv-db.c7ai7kcko0e9.us-east-1.rds.amazonaws.com --port=3306 --user=admin --password=43YBARqqmz creditv-db > CTTEST1.sql
       - name: Upload backup to S3
         run: |
-          aws s3 cp CTTEST.sql s3://frkpruebas/respaldo/
+          pwd
+          ls -l
+          aws s3 cp CTTEST1.sql s3://frkpruebas/respaldo/
           
