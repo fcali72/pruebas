@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
   # Permite que se ejecute automaticamente Cron
-  schedule:
-      - cron: '35 20 * * *'
+  # schedule:
+  #    - cron: '35 20 * * *'
       
 jobs:
   backup:
